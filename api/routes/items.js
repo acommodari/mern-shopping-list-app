@@ -47,6 +47,5 @@ module.exports = app => {
         res.json({ sucess: true });
       }
     });
-    res.json({ sucess: true });
   });
 };

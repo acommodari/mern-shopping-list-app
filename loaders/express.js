@@ -1,5 +1,4 @@
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const routes = require('../api');
 require('dotenv').config();
 
@@ -12,9 +11,6 @@ module.exports = app => {
   );
 
   app.use(bodyParser.json());
-
-  // cors Middleware
-  app.use(cors());
 
   // Use routes
   app.use('/api', routes());
