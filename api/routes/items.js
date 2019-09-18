@@ -1,5 +1,6 @@
 const express = require('express');
 const Item = require('../../models/Item');
+const isAuth = require('../middleware/isAuth');
 
 const route = express.Router();
 
@@ -22,9 +23,9 @@ module.exports = app => {
   /**
    * @route POST api/items
    * @desc  Create An Item
-   * @acess Public
+   * @acess Private
    */
-  route.post('/', async (req, res) => {
+  route.post('/', isAuth, async (req, res) => {
     const newItem = new Item({
       name: req.body.name
     });
@@ -37,9 +38,9 @@ module.exports = app => {
   /**
    * @route DELETE api/items/:id
    * @desc  Delete An Item
-   * @acess Public
+   * @acess Private
    */
-  route.delete('/:id', async (req, res) => {
+  route.delete('/:id', isAuth, async (req, res) => {
     await Item.findByIdAndDelete(req.params.id, (err, data) => {
       if (err) {
         res.status(404).json({ success: false });
