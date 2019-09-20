@@ -24,16 +24,15 @@ class ShoppingList extends Component {
   render() {
     const { items } = this.props.item;
     return (
-      <Container>
+      <Container className="p-0">
         <ListGroup>
           <TransitionGroup className="shopping-list">
             {items.map(({ _id, name }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
-                <ListGroupItem>
+                <ListGroupItem className="font-weight-bold">
                   {this.props.isAuthenticated ? (
                     <Button
-                      className="remove-btn"
-                      color="danger"
+                      className="close remove-btn bg-transparent"
                       size="sm"
                       onClick={this.onDeleteClick.bind(this, _id)}
                     >

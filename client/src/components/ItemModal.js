@@ -28,7 +28,7 @@ class ItemModal extends Component {
     e.preventDefault();
 
     const newItem = {
-      name: this.state.name
+      name: this.state.name.trim()
     };
 
     this.props.addItem(newItem);
